@@ -1,4 +1,4 @@
-import Index from '@/views/Home'
+import Index from '@/views/index/index'
 
 export default {
   path: '/',

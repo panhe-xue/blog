@@ -1,27 +1,15 @@
 <template>
-  <div id="app">
-    <el-container>
-      <el-header style="padding: 0!important;">
-        <Header></Header>
-      </el-header>
-      <el-main style="margin: 0;padding: 0;">
-        <router-view/>
-      </el-main>
-      <el-footer style="border-top: 1px solid #ccc;height: auto;">
-        <Footer></Footer>
-      </el-footer>
-    </el-container>
+  <div id="index">
+      <Banner></Banner>
   </div>
 </template>
 
 <script>
-import Header from '@/views/layout/Header'
-import Footer from '@/views/layout/Footer'
+import Banner from './banner'
 export default {
   name: 'app',
   components: {
-    Header,
-    Footer
+    Banner
   }
 }
 </script>
