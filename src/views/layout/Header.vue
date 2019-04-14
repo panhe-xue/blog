@@ -12,13 +12,13 @@
                     text-color="#fff"
                     active-text-color="#A020F0">
                         <el-menu-item class="el-menu-item" v-for="(item, index) in menu" :index="item.route" :key="index">
-                            {{item.text}}
+                          {{item.text}}
                         </el-menu-item>
                     </el-menu>
                 </div>
             </el-col>
             <el-col :span="4" class="logo hei">
-                <div><router-link to="/" class="router-link">{{title}}</router-link></div>
+                <div>{{title}}</div>
             </el-col>
         </el-row>
     </div>
@@ -67,7 +67,6 @@ export default {
   },
   mounted () {
     this.$store.commit('header', this.menu[0])
-    console.log(this.$route, this.$router, 'aaaaabbb')
     this.setLogo()
   },
   computed: {
@@ -77,11 +76,14 @@ export default {
   },
   methods: {
     handleSelect (key, keyPath) {
-      this.$store.commit('header', this.menu[--key])
-      this.setLogo()
+      const self = this
+      const obj = self.menu.filter((item) => {
+        return item.route === key
+      })
+      self.$store.commit('header', obj[0])
+      self.setLogo()
     },
     setLogo () {
-      console.log(this.header)
       this.backgroundColor = this.header.backgroundColor
       document.querySelector('.header').style.backgroundColor = `${this.header.backgroundColor}`
     }

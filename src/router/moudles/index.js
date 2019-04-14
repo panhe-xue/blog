@@ -1,7 +1,7 @@
-import Index from '@/views/index/index'
+import Index from '@/views/home/index'
 
 export default {
-  path: '/',
+  path: '/home',
   name: 'index',
   component: Index
 }
