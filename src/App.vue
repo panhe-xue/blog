@@ -5,6 +5,7 @@
         <Header></Header>
       </el-header>
       <el-main style="margin: 0;padding: 0;">
+        <Banner></Banner>
         <router-view/>
       </el-main>
       <el-footer style="border-top: 1px solid #ccc;height: auto;">
@@ -17,11 +18,13 @@
 <script>
 import Header from '@/views/layout/Header'
 import Footer from '@/views/layout/Footer'
+import Banner from '@/views/layout/Banner'
 export default {
   name: 'app',
   components: {
     Header,
-    Footer
+    Footer,
+    Banner
   }
 }
 </script>
@@ -48,5 +51,8 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #1fda7c;
+}
+.router-link{
+  text-decoration: none;
 }
 </style>

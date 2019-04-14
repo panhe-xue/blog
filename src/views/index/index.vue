@@ -1,15 +1,14 @@
 <template>
   <div id="index">
-      <Banner></Banner>
+      首页
   </div>
 </template>
 
 <script>
-import Banner from './banner'
+
 export default {
   name: 'app',
   components: {
-    Banner
   }
 }
 </script>

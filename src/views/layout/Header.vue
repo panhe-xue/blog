@@ -4,20 +4,21 @@
             <el-col :span="20">
                 <div class="menu" style="">
                     <el-menu
-                    default-active="1"
+                    :default-active="$route.path"
                     class="el-menu-demo"
                     mode="horizontal"
+                    :router="true"
                     @select="handleSelect"
                     text-color="#fff"
                     active-text-color="#A020F0">
-                        <el-menu-item class="el-menu-item" v-for="(item, index) in menu" :index="item.index" :key="index">
+                        <el-menu-item class="el-menu-item" v-for="(item, index) in menu" :index="item.route" :key="index">
                             {{item.text}}
                         </el-menu-item>
                     </el-menu>
                 </div>
             </el-col>
             <el-col :span="4" class="logo hei">
-                <div>{{title}}</div>
+                <div><router-link to="/" class="router-link">{{title}}</router-link></div>
             </el-col>
         </el-row>
     </div>
@@ -34,38 +35,39 @@ export default {
         {
           text: 'HOME',
           backgroundColor: 'blue',
-          note: '吃亏才是福',
-          index: '1'
+          route: '/home',
+          note: '吃亏才是福'
         },
         {
           text: 'ABOUT',
           backgroundColor: 'green',
-          note: '学苟知本，六经皆我注脚',
-          index: '2'
+          route: '/about',
+          note: '学苟知本，六经皆我注脚'
         },
         {
           text: 'ARCHIVE',
           backgroundColor: 'orange',
-          note: '看到的，是我笨方法练习写作的所有文章',
-          index: '3'
+          route: '/archive',
+          note: '看到的，是我笨方法练习写作的所有文章'
         },
         {
           text: 'TAGS',
           backgroundColor: 'red',
-          note: '哈哈，你找到了我的文章基因库',
-          index: '4'
+          route: '/tags',
+          note: '哈哈，你找到了我的文章基因库'
         },
         {
           text: 'WORKS',
           backgroundColor: 'brown',
-          note: '知之真切笃实处即是行，行之明觉精察处即是知',
-          index: '5'
+          route: '/works',
+          note: '知之真切笃实处即是行，行之明觉精察处即是知'
         }
       ]
     }
   },
   mounted () {
     this.$store.commit('header', this.menu[0])
+    console.log(this.$route, this.$router, 'aaaaabbb')
     this.setLogo()
   },
   computed: {
@@ -87,6 +89,9 @@ export default {
 }
 </script>
 <style scoped>
+.header{
+  font-weight: 800;
+}
 .el-menu{
   border-bottom: 1px solid transparent!important;
 }
