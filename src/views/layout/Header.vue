@@ -18,7 +18,9 @@
                 </div>
             </el-col>
             <el-col :span="4" class="logo hei">
-                <div>{{title}}</div>
+                <div>
+                  <router-link to="/home" tag="a" style="text-decoration: none;">{{title}}</router-link>
+                </div>
             </el-col>
         </el-row>
     </div>
@@ -30,7 +32,6 @@ export default {
   data () {
     return {
       title: '吃亏才是福',
-      backgroundColor: 'blue',
       menu: [
         {
           text: 'HOME',
@@ -65,14 +66,33 @@ export default {
       ]
     }
   },
-  mounted () {
-    this.$store.commit('header', this.menu[0])
-    this.setLogo()
-  },
   computed: {
     ...mapGetters([
       'header'
     ])
+  },
+  beforeCreate () {
+    this.$store.commit('header', {
+      text: 'HOME',
+      backgroundColor: 'blue',
+      route: '/home',
+      note: '吃亏才是福'
+    })
+  },
+  mounted () {
+    document.querySelector('.header').style.backgroundColor = this.header.backgroundColor
+  },
+  watch: {
+    header (nval) {
+      document.querySelector('.header').style.backgroundColor = nval.backgroundColor
+    },
+    $route (to, from) {
+      const self = this
+      const obj = self.menu.filter((item) => {
+        return item.route === self.$route.path
+      })
+      this.$store.commit('header', obj[0])
+    }
   },
   methods: {
     handleSelect (key, keyPath) {
@@ -81,16 +101,14 @@ export default {
         return item.route === key
       })
       self.$store.commit('header', obj[0])
-      self.setLogo()
-    },
-    setLogo () {
-      this.backgroundColor = this.header.backgroundColor
-      document.querySelector('.header').style.backgroundColor = `${this.header.backgroundColor}`
     }
   }
 }
 </script>
 <style scoped>
+.el-menu-item:focus, .el-menu-item:hover {
+  background-color: transparent!important;
+}
 .header{
   font-weight: 800;
 }

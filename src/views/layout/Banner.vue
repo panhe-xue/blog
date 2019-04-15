@@ -16,6 +16,9 @@ export default {
       document.querySelector('.banner').style.backgroundColor = nval.backgroundColor
     }
   },
+  mounted () {
+    document.querySelector('.banner').style.backgroundColor = this.header.backgroundColor
+  },
   computed: {
     ...mapGetters([
       'header'
@@ -34,7 +37,6 @@ export default {
 .banner{
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #fff;
-    background-color: green;
     padding: 150px 0;
     box-sizing: border-box;
     -moz-box-sizing: border-box;

@@ -1,11 +1,6 @@
 /** 首页 */
 const state = {
-  header: {
-    text: 'HOME',
-    backgroundColor: 'blue',
-    note: '吃亏才是福',
-    index: '1'
-  }
+  header: {}
 }
 const mutations = {
   header (state, obj) {
